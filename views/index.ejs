@@ -1,0 +1,94 @@
+<!-- views/index.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <!-- Bootstrap CSS CDN -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/css/styles.css" rel="stylesheet">
+  <style>
+    .navbar-nav {
+      flex-direction: row;
+    }
+    .nav-item .dropdown-menu {
+      right: 0; /* Asegura que el menú desplegable se alinee a la derecha */
+      left: auto;
+    }
+
+    body {
+      background-color: #f8f8f8; /* Fondo claro para un ambiente acogedor */
+      font-family: 'Arial', sans-serif; /* Fuente amigable y legible */
+    }
+
+    /* Cambia el color de la parte superior (navbar) a naranja */
+    .navbar {
+      background-color: #ff7f50; /* Color naranja */
+    }
+
+    h1 {
+      color: #d2691e; /* Color del encabezado principal */
+      font-size: 2.5rem; /* Tamaño de fuente del título */
+      margin-bottom: 20px; /* Espacio debajo del título */
+    }
+
+    p {
+      color: #8b4513; /* Color del texto para un toque elegante */
+      font-size: 1.2rem; /* Tamaño de fuente del párrafo */
+    }
+
+    .text-center {
+      background-color: #ffffff; /* Fondo blanco para el contenedor de texto */
+      padding: 20px; /* Espaciado interno */
+      border-radius: 10px; /* Bordes redondeados */
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Sombra para dar profundidad */
+    }
+
+    /* Estilo para el contenedor de carga */
+    .loading-animation {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: rgba(255, 255, 255, 0.9); /* Fondo ligeramente más oscuro para mayor contraste */
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      z-index: 1000;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Sombra para profundidad */
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Incluir el Navbar -->
+  <%- include('./partials/navbar') %>
+
+  <% if (!user) { %>
+  <!-- Contenedor Principal Centrado -->
+  <div class="d-flex justify-content-center align-items-center vh-100">
+    <div class="text-center">
+      <h1>-RESTAURANTE FRUTIFANTASTICO-</h1>
+      <p>Esperamos que disfrute de nuestro menú!</p>
+    </div>
+  </div>
+  <% } else { %>
+    <div class="d-flex justify-content-center align-items-center vh-100">
+      <div class="text-center">
+        <h1>Bienvenido Al Restaurante Frutifantástico <%= user.name %></h1>
+        <p>Utiliza los menús para desplazarte</p>
+      </div>
+    </div>
+  <% } %>
+
+  <%- include('./partials/loading') %>
+  
+  <!-- Bootstrap JS and dependencies (jQuery, Popper.js, Bootstrap JS) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
